@@ -20,6 +20,11 @@ export default class IPL {
 		this.loadTeams();
 		this.loadGrounds();
 		this.loadPlayers();
+		this.codesArray = [
+			...this.teamsArray,
+			...this.groundsArray,
+			...this.playersArray
+		];
 	}
 
 	loadTeams () {
@@ -75,6 +80,7 @@ export default class IPL {
 		setNextPrev(this.seasons);
 		setNextPrev(this.matches);
 
+		this.codesArray.forEach(x => x.postmatchSetup());
 		this.groundsArray.forEach(g => g.postmatchSetup());
 		this.playersArray.forEach(x => x.postmatchSetup());
 
