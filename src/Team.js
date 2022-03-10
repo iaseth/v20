@@ -23,7 +23,7 @@ export default class Team extends BaseClass {
 
 	getLink = () => `/teams/${this.path}`;
 
-	postmatchSetup () {
+	postBundleSetup () {
 		//
 	}
 }

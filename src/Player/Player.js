@@ -28,7 +28,7 @@ export default class Player extends BaseClass {
 		this.bowlingPerformances = [];
 	}
 
-	postmatchSetup () {
+	postBundleSetup () {
 		this.battingPositions = [];
 		this.battingPerformances.forEach(bp => {
 			if (!bp.dnb) this.battingPositions[bp.position] = true;

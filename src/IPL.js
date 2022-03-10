@@ -80,9 +80,9 @@ export default class IPL {
 		setNextPrev(this.seasons);
 		setNextPrev(this.matches);
 
-		this.codesArray.forEach(x => x.postmatchSetup());
-		this.groundsArray.forEach(g => g.postmatchSetup());
-		this.playersArray.forEach(x => x.postmatchSetup());
+		this.codesArray.forEach(x => x.postBundleSetup());
+		this.groundsArray.forEach(g => g.postBundleSetup());
+		this.playersArray.forEach(x => x.postBundleSetup());
 
 		this.rivalries = [];
 		for (let t1 of this.teamsArray) {

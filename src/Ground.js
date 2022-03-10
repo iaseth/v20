@@ -14,7 +14,7 @@ export default class Ground extends BaseClass {
 		this.path = jo.path;
 	}
 
-	postmatchSetup () {
+	postBundleSetup () {
 		this.setHometeam();
 	}
 
