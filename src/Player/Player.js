@@ -12,6 +12,8 @@ export default class Player extends BaseClass {
 		this.id = jo.id;
 		this.fn = jo.fn;
 		this.sn = jo.sn;
+		this.fun = jo.fun;
+		this.nick = jo.nick;
 		this.country = jo.country;
 		this.path = jo.path;
 
