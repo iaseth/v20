@@ -15,8 +15,8 @@ export default class Player extends BaseClass {
 		this.country = jo.country;
 		this.path = jo.path;
 
-		this.batsRight = jo.batright;
-		this.bowlsRight = jo.bowlright;
+		this.batsRight = jo.batsRight;
+		this.bowlsRight = jo.bowlsRight;
 
 		this.firstMatch = null;
 		this.lastMatch = null;
