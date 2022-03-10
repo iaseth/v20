@@ -3,8 +3,6 @@ import BowlerInning from './BowlerInning';
 import Wicket from './Wicket';
 import OverHistory from './OverHistory';
 
-import {getBalls} from '../Utils';
-
 
 
 export default class TeamInning {
@@ -28,7 +26,7 @@ export default class TeamInning {
 		this.jo = jo;
 		this.runs = jo.runs;
 		this.overs = jo.overs;
-		this.balls = getBalls(jo.overs);
+		this.balls = jo.balls;
 		this.wkts = jo.wickets.length;
 		this.allout = this.wkts === 10;
 

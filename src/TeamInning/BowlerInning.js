@@ -1,5 +1,4 @@
 import PlayerInning from './PlayerInning';
-import {getBalls} from '../Utils';
 
 
 
@@ -14,7 +13,7 @@ export default class BowlerInning extends PlayerInning {
 		this.player = teamInning.tournament.players[jo.id];
 
 		this.overs = jo.ov;
-		this.balls = getBalls(jo.ov);
+		this.balls = jo.balls;
 		this.maidens = jo.m;
 		this.runs = jo.r;
 		this.wickets = jo.w;
