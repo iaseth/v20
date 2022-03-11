@@ -29,6 +29,9 @@ class PointsTableTeam {
 	getForRunRate = () => this.forRunrate.toFixed(2);
 	getVsRunRate = () => this.vsRunrate.toFixed(2);
 	getNetRunRate = () => this.netRunrate.toFixed(2);
+
+	getWinPercent = () => (this.wins * 100 / this.matches.length);
+	getWinPercentF = (n=1) => this.getWinPercent().toFixed(n);
 }
 
 export default class PointsTable {
