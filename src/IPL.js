@@ -3,6 +3,7 @@ import Player from './Player';
 import Team from './Team';
 import Season from './Season';
 import Rivalry from './Rivalry';
+import PointsTable from './PointsTable';
 
 import {setNextPrev} from './Utils';
 
@@ -79,6 +80,7 @@ export default class IPL {
 		this.matches.forEach((m, index) => m.index = index);
 		setNextPrev(this.seasons);
 		setNextPrev(this.matches);
+		this.pointsTable = new PointsTable(this, this.matches);
 
 		this.rivalries = [];
 		for (let t1 of this.teamsArray) {

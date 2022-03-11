@@ -1,3 +1,5 @@
+import OrangeCapTable from './OrangeCapTable';
+import PurpleCapTable from './PurpleCapTable';
 
 
 
@@ -31,6 +33,7 @@ class PointsTableTeam {
 
 export default class PointsTable {
 	constructor (tournament, matches) {
+		// tournament, season, teams and grounds can have a points table
 		this.tournament = tournament;
 		this.matches = matches;
 
