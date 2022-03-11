@@ -8,6 +8,10 @@ class PointsTableRow {
 		this.table = table;
 		this.team = team;
 		this.matches = [];
+		this.forInnings = [];
+		this.vsInnings = [];
+		this.batsFirst = 0;
+		this.bowlsFirst = 0;
 		this.points = 0;
 		this.wins = 0;
 		this.losses = 0;
@@ -50,41 +54,45 @@ export default class PointsTable {
 		Object.keys(teamsObject).forEach(teamId => this.rows.push(new PointsTableRow(this, this.tournament.teams[teamId])));
 
 		this.matches.forEach(match => {
-			this.rows.forEach(team => {
-				if (match.team_a === team.team || match.team_b === team.team) {
-					team.matches += 1;
+			this.rows.forEach(row => {
+				if (match.team_a === row.team || match.team_b === row.team) {
+					row.matches += 1;
 
 					// adding points
 					if (match.winner === null) {
-						team.points += 1;
-						team.noResults += 1;
-					} else if (match.winner === team.team) {
-						team.points += 2;
-						team.wins += 1;
-					} else if (match.loser === team.team) {
-						team.losses += 1;
+						row.points += 1;
+						row.noResults += 1;
+					} else if (match.winner === row.team) {
+						row.points += 2;
+						row.wins += 1;
+					} else if (match.loser === row.team) {
+						row.losses += 1;
 					}
 
 					// adding runs, overs and wickets
 					let forInning = null, vsInning = null;
-					if (match.firstInning.team === team.team) {
+					if (match.firstInning.team === row.team) {
+						row.batsFirst += 1;
 						forInning = match.firstInning;
 						vsInning = match.secondInning;
 					} else {
+						row.bowlsFirst += 1;
 						forInning = match.secondInning;
 						vsInning = match.firstInning;
 					}
 
 					if (forInning && forInning.actuallyHappened()) {
-						team.forRuns += forInning.runs;
-						team.forBalls += forInning.allout ? 120 : forInning.balls;
-						team.forWickets += forInning.wkts;
+						row.forInnings.push(forInning);
+						row.forRuns += forInning.runs;
+						row.forBalls += forInning.allout ? 120 : forInning.balls;
+						row.forWickets += forInning.wkts;
 					}
 
 					if (vsInning && vsInning.actuallyHappened()) {
-						team.vsRuns += vsInning.runs;
-						team.vsBalls += vsInning.allout ? 120 : vsInning.balls;
-						team.vsWickets += vsInning.wkts;
+						row.vsInnings.push(vsInning);
+						row.vsRuns += vsInning.runs;
+						row.vsBalls += vsInning.allout ? 120 : vsInning.balls;
+						row.vsWickets += vsInning.wkts;
 					}
 				}
 			});
@@ -101,6 +109,6 @@ export default class PointsTable {
 			return (b.points - a.points);
 		});
 
-		this.rows.forEach((team, index) => team.position = (index+1));
+		this.rows.forEach((row, index) => row.position = (index+1));
 	}
 }
