@@ -85,10 +85,22 @@ export default class PointsTableRow {
 		this.netRunrate = this.forRunrate - this.vsRunrate;
 	}
 
-	getForRunRate = () => this.forRunrate.toFixed(2);
-	getVsRunRate = () => this.vsRunrate.toFixed(2);
-	getNetRunRate = () => this.netRunrate.toFixed(2);
+	hasPlusNRR = () => this.netRunrate >= 0;
+	hasMinusNRR = () => this.netRunrate < 0;
+
+	getForRunRate = (n=2) => this.forRunrate.toFixed(n);
+	getVsRunRate = (n=2) => this.vsRunrate.toFixed(n);
+	getNetRunRate = (n=2) => this.netRunrate.toFixed(n);
+	getNetRunRateS = (n=2) => {
+		if (this.netRunrate >= 0) {
+			return "+" + this.netRunrate.toFixed(n);
+		}
+		return this.netRunrate.toFixed(n);
+	}
 
 	getWinPercent = () => (this.wins * 100 / this.matches.length);
 	getWinPercentF = (n=1) => this.getWinPercent().toFixed(n);
+
+	getLossPercent = () => (this.losses * 100 / this.matches.length);
+	getLossPercentF = (n=1) => this.getLossPercent().toFixed(n);
 }
