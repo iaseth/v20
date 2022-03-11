@@ -16,10 +16,11 @@ export default class Team extends BaseClass {
 		this.abb = jo.abb;
 		this.path = jo.abb.toLowerCase();
 
-		this.color = jo.bg;
+		this.color = jo.color;
 		this.fgStyle = {color: this.color};
 		this.bgStyle = {backgroundColor: this.color};
 		this.bdStyle = {borderColor: this.color};
+		this.otStyle = {outlineColor: this.color};
 		this.rivalries = [];
 	}
 
