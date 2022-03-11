@@ -8,7 +8,9 @@ export default class Rivalry extends BaseClass {
 		this.tournament = tournament;
 		this.t1 = t1;
 		this.t2 = t2;
-		this.link = `/rivalry/${t1.path}-vs-${t2.path}`;
+		this.path = `${t1.path}-vs-${t2.path}`;
+		this.path_b = `${t2.path}-vs-${t1.path}`;
+		this.link = `/rivalry/${this.path}`;
 
 		for (let match of tournament.matches) {
 			const ta = match.team_a;

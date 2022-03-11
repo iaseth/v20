@@ -19,11 +19,16 @@ export default class Team extends BaseClass {
 		this.fgStyle = {color: this.color};
 		this.bgStyle = {backgroundColor: this.color};
 		this.bdStyle = {borderColor: this.color};
+		this.rivalries = [];
 	}
 
 	getLink = () => `/teams/${this.path}`;
 
 	postBundleSetup () {
-		//
+		for (let rivalry of this.tournament.rivalries) {
+			if (rivalry.t1 === this || rivalry.t2 === this) {
+				this.rivalries.push(rivalry);
+			}
+		}
 	}
 }

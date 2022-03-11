@@ -80,10 +80,6 @@ export default class IPL {
 		setNextPrev(this.seasons);
 		setNextPrev(this.matches);
 
-		this.codesArray.forEach(x => x.postBundleSetup());
-		this.groundsArray.forEach(g => g.postBundleSetup());
-		this.playersArray.forEach(x => x.postBundleSetup());
-
 		this.rivalries = [];
 		for (let t1 of this.teamsArray) {
 			for (let t2 of this.teamsArray) {
@@ -96,6 +92,14 @@ export default class IPL {
 			}
 		}
 		this.rivalries.sort((a, b) => (b.getLength() - a.getLength()));
+
+		this.postBundleSetup();
+	}
+
+	postBundleSetup () {
+		this.teamsArray.forEach(x => x.postBundleSetup());
+		this.groundsArray.forEach(g => g.postBundleSetup());
+		this.playersArray.forEach(x => x.postBundleSetup());
 	}
 
 	getSeason (year) {
@@ -142,6 +146,14 @@ export default class IPL {
 			if (player.path.search(path) !== -1) return player;
 			// andre-russell-batsman goes to andre-russell
 			if (path.search(player.path) !== -1) return player;
+		}
+		return null;
+	}
+
+	getRivalryFromPath (path) {
+		path = path.toLowerCase();
+		for (let rivalry of this.rivalries) {
+			if (path === rivalry.path || path === rivalry.path_b) return rivalry;
 		}
 		return null;
 	}
