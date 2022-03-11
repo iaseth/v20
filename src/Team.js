@@ -1,4 +1,5 @@
 import BaseClass from './BaseClass';
+import PointsTable from './PointsTable';
 
 
 
@@ -30,5 +31,7 @@ export default class Team extends BaseClass {
 				this.rivalries.push(rivalry);
 			}
 		}
+
+		this.pointsTable = new PointsTable(this.tournament, this.matches);
 	}
 }

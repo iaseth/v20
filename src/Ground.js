@@ -1,4 +1,5 @@
 import BaseClass from './BaseClass';
+import PointsTable from './PointsTable';
 
 
 
@@ -16,6 +17,7 @@ export default class Ground extends BaseClass {
 
 	postBundleSetup () {
 		this.setHometeam();
+		this.pointsTable = new PointsTable(this.tournament, this.matches);
 	}
 
 	getLink = () => `/grounds/${this.path}`;
