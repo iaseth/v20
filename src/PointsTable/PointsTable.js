@@ -3,7 +3,7 @@ import PurpleCapTable from './PurpleCapTable';
 
 
 
-class PointsTableTeam {
+class PointsTableRow {
 	constructor (table, team) {
 		this.table = table;
 		this.team = team;
@@ -46,11 +46,11 @@ export default class PointsTable {
 			teamsObject[match.team_b.id] = true;
 		}
 
-		this.teams = [];
-		Object.keys(teamsObject).forEach(teamId => this.teams.push(new PointsTableTeam(this, this.tournament.teams[teamId])));
+		this.rows = [];
+		Object.keys(teamsObject).forEach(teamId => this.rows.push(new PointsTableRow(this, this.tournament.teams[teamId])));
 
 		this.matches.forEach(match => {
-			this.teams.forEach(team => {
+			this.rows.forEach(team => {
 				if (match.team_a === team.team || match.team_b === team.team) {
 					team.matches += 1;
 
@@ -90,17 +90,17 @@ export default class PointsTable {
 			});
 		});
 
-		this.teams.forEach(row => {
+		this.rows.forEach(row => {
 			row.forRunrate = row.forRuns * 6 / row.forBalls;
 			row.vsRunrate = row.vsRuns * 6 / row.vsBalls;
 			row.netRunrate = row.forRunrate - row.vsRunrate;
 		});
 
-		this.teams.sort((a, b) => {
+		this.rows.sort((a, b) => {
 			if (a.points === b.points) return (b.netRunrate - a.netRunrate);
 			return (b.points - a.points);
 		});
 
-		this.teams.forEach((team, index) => team.position = (index+1));
+		this.rows.forEach((team, index) => team.position = (index+1));
 	}
 }
