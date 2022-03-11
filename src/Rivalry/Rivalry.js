@@ -1,5 +1,5 @@
-import BaseClass from './BaseClass';
-import PointsTable from './PointsTable';
+import BaseClass from '../BaseClass';
+import PointsTable from '../PointsTable';
 
 
 
