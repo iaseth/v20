@@ -30,10 +30,9 @@ class PointsTableTeam {
 }
 
 export default class PointsTable {
-	constructor (season) {
-		this.season = season;
-		this.tournament = season.tournament;
-		this.matches = season.leagueMatches;
+	constructor (tournament, matches) {
+		this.tournament = tournament;
+		this.matches = matches;
 
 		const teamsObject = {}
 		for (let match of this.matches) {

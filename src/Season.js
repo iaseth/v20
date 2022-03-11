@@ -30,7 +30,7 @@ export default class Season extends BaseClass {
 		this.leagueMatches = this.matches.slice(0, this.numberOfLeagueMatches);
 		this.playoffMatches = this.matches.slice(this.numberOfLeagueMatches);
 		this.playoffMatches.forEach((x) => x.playoff = true);
-		this.pointsTable = new PointsTable(this);
+		this.pointsTable = new PointsTable(this.tournament, this.leagueMatches);
 	}
 
 	getLink = () => `/${this.year}`;

@@ -1,4 +1,5 @@
 import BaseClass from './BaseClass';
+import PointsTable from './PointsTable';
 
 
 
@@ -27,6 +28,8 @@ export default class Rivalry extends BaseClass {
 			if (m.winner === this.t1) this.t1Wins += 1;
 			if (m.winner === this.t2) this.t2Wins += 1;
 		});
+
+		this.pointsTable = new PointsTable(this.tournament, this.matches);
 	}
 
 	getLength = () => this.matches.length;
