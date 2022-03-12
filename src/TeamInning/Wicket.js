@@ -10,6 +10,8 @@ export default class Wicket {
 	}
 
 	setBatsmanInning (batsmanInning) {
+		// let type = batsmanInning.jo.out.type;
+		// type is one of ['b', 'ct', 'ro', 'lbw', 'ret', 'st', 'ob', 'reto', 'hw']
 		this.batsmanInning = batsmanInning;
 	}
 }

@@ -56,7 +56,7 @@ export default class Match {
 	getName4CL = () => `[${this.season.year}] ${this.team_a.abb} vs ${this.team_b.abb}`;
 
 	consoleLog () {
-		this.firstInning.consoleLog();
-		this.secondInning.consoleLog();
+		if (this.firstInning) this.firstInning.consoleLog();
+		if (this.secondInning) this.secondInning.consoleLog();
 	}
 }

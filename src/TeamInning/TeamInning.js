@@ -8,6 +8,7 @@ import OverHistory from './OverHistory';
 export default class TeamInning {
 	constructor (squad, jo) {
 		this.squad = squad;
+		this.match = squad.match;
 		this.captain = squad.captain;
 		this.wk = squad.wk;
 		this.match = squad.match;
