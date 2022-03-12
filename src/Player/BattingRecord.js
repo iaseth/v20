@@ -38,7 +38,13 @@ export default class BattingRecord {
 			} else if (performance.runs >= 50) {
 				this.n50++;
 			}
-			if (this.hs === null || this.hs.runs < performance.runs) this.hs = performance;
+
+			if (this.hs === null || this.hs.runs < performance.runs) {
+				this.hs = performance;
+			} else if (this.hs.runs === performance.runs && this.hs.balls > performance.balls) {
+				// update hs if there is another inning with same runs at a faster sr
+				this.hs = performance;
+			}
 		});
 	}
 
@@ -48,5 +54,5 @@ export default class BattingRecord {
 	getSRF = () => this.getSR().toFixed(1);
 	getSR = () => this.balls ? (this.runs * 100 / this.balls) : 0;
 
-	getHsString = () => this.hs ? this.hs.runs : "-";
+	getHsString = () => this.hs ? this.hs.runsString() : "-";
 }

@@ -38,7 +38,11 @@ export default class BowlingRecord {
 			this.dots += performance.dots;
 			this.wd += performance.wd;
 			this.nb += performance.nb;
+
 			if (this.best === null || this.best.wickets < performance.wickets) {
+				this.best = performance;
+			} else if (this.best.wickets === performance.wickets && this.best.runs > performance.runs) {
+				// update best figures if player took same n.o. wickets for fewer runs
 				this.best = performance;
 			}
 		});
