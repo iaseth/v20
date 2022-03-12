@@ -40,12 +40,24 @@ export default class TeamInning {
 			this.wickets.push(wicket);
 		}
 
-		for (let bj of jo.batting) {
+		this.setupBatsmen();
+		this.setupBowlers();
+	}
+
+	setupBatsmen () {
+		for (let bj of this.jo.batting) {
 			let position = this.batsmen.length + 1;
 			let x = new BatsmanInning(this, bj, position);
 			x.player.battingPerformances.push(x);
 			this.batsmen.push(x);
 		}
+
+		// this.nzBatsmen does not contain DNB batsmen
+		this.nzBatsmen = [...this.batsmen];
+		this.sortedBatsmen = [...this.batsmen].sort((a, b) => {
+			return (b.runs - a.runs);
+		});
+		this.bestBatsman = this.sortedBatsmen[0];
 
 		this.squad.members.forEach(member => {
 			for (let batsman of this.batsmen) {
@@ -58,13 +70,22 @@ export default class TeamInning {
 			x.player.battingPerformances.push(x);
 			this.batsmen.push(x);
 		});
+	}
 
-		for (let bj of jo.bowling) {
+	setupBowlers () {
+		for (let bj of this.jo.bowling) {
 			let position = this.bowlers.length + 1;
 			let x = new BowlerInning(this, bj, position);
 			x.player.bowlingPerformances.push(x);
 			this.bowlers.push(x);
 		}
+
+		// this.nzBowlers does not contain DNB bowlers (if they are added in future)
+		this.nzBowlers = [...this.bowlers];
+		this.sortedBowlers = [...this.bowlers].sort((a, b) => {
+			return (b.wickets - a.wickets);
+		});
+		this.bestBowler = this.sortedBowlers[0];
 	}
 
 	runrate = () => this.balls ? (this.runs * 6 / this.balls) : 0;
