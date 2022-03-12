@@ -17,6 +17,7 @@ export default class TeamInning {
 		this.batsmen = [];
 		this.bowlers = [];
 		this.overHistory = null;
+		this.wickets = [];
 
 		if (jo === undefined) {
 			this.dnp = true;
@@ -30,8 +31,12 @@ export default class TeamInning {
 		this.balls = jo.balls;
 		this.wkts = jo.wickets.length;
 		this.allout = this.wkts === 10;
-		if (jo && jo.history) {
-			this.overHistory = new OverHistory(this, jo.history);
+
+		// jo definitely exists and contains 'history' and 'wickets' keys
+		this.overHistory = new OverHistory(this, jo.history);
+		for (let wj of jo.wickets) {
+			const wicket = new Wicket(this, wj);
+			this.wickets.push(wicket);
 		}
 
 		for (let bj of jo.batting) {

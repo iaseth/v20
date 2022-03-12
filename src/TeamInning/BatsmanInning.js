@@ -18,6 +18,15 @@ export default class BatsmanInning extends PlayerInning {
 		this.n4 = jo.n4;
 		this.n6 = jo.n6;
 		this.isOut = jo.out ? true : false;
+		if (this.isOut) {
+			for (let wicket of teamInning.wickets) {
+				if (this.player === wicket.batsman) {
+					wicket.setBatsmanInning(this);
+					this.wicket = wicket;
+					break;
+				}
+			}
+		}
 	}
 
 	isCaptain = () => (this.player.id === this.teamInning.captain.id);
