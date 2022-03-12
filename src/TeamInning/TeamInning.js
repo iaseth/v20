@@ -16,6 +16,7 @@ export default class TeamInning {
 		this.opposition = squad.opposition;
 		this.batsmen = [];
 		this.bowlers = [];
+		this.overHistory = null;
 
 		if (jo === undefined) {
 			this.dnp = true;
@@ -29,6 +30,9 @@ export default class TeamInning {
 		this.balls = jo.balls;
 		this.wkts = jo.wickets.length;
 		this.allout = this.wkts === 10;
+		if (jo && jo.history) {
+			this.overHistory = new OverHistory(this, jo.history);
+		}
 
 		for (let bj of jo.batting) {
 			let position = this.batsmen.length + 1;

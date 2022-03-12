@@ -53,6 +53,8 @@ export default class Match {
 
 	getLink = () => `/${this.year}/${this.seasonIndex+1}`;
 
+	getName4CL = () => `[${this.season.year}] ${this.team_a.abb} vs ${this.team_b.abb}`;
+
 	consoleLog () {
 		this.firstInning.consoleLog();
 		this.secondInning.consoleLog();
