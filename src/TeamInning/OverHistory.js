@@ -65,6 +65,13 @@ class Over {
 		return this.wickets;
 	}
 
+	getHeightPercent (n=32) {
+		// returns percent value for height of over's bar in scoring-graph
+		// n=32 run over is full 100%
+		const height = (this.getRuns() * 100 / n).toFixed() + "%";
+		return height;
+	}
+
 	consoleLog () {
 		console.log(`\tover no. ${this.over}: [${this.balls.join('-')}] => ${this.getRuns()} runs`);
 	}
