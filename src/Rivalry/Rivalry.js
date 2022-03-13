@@ -21,6 +21,8 @@ export default class Rivalry extends BaseClass {
 			}
 		}
 
+		this.matchesReversed = [...this.matches].reverse();
+
 		this.t1Wins = 0;
 		this.t2Wins = 0;
 		this.matches.forEach(m => {

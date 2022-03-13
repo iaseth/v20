@@ -94,6 +94,7 @@ export default class IPL {
 			}
 		}
 		this.rivalries.sort((a, b) => (b.getLength() - a.getLength()));
+		setNextPrev(this.rivalries);
 
 		this.postBundleSetup();
 	}
