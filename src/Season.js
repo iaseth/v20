@@ -21,10 +21,18 @@ export default class Season extends BaseClass {
 
 		const n = this.matches.length;
 		this.opening = this.matches[0];
+		// this.will break when an incomplete season is added
 		this.final = this.matches[n-1];
 		this.matches[n-1].final = true;
 		this.winner = this.final.winner;
 		this.loser = this.final.loser;
+
+		// this will work when winner is valid
+		if (this.winner) {
+			this.bdStyle = this.winner.bdStyle;
+			this.bgStyle = this.winner.bgStyle;
+			this.fgStyle = this.winner.fgStyle;
+		}
 
 		this.numberOfLeagueMatches = (n % 2 === 0) ? (n-4) : (n-3);
 		this.leagueMatches = this.matches.slice(0, this.numberOfLeagueMatches);

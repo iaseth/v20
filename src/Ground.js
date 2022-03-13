@@ -46,5 +46,8 @@ export default class Ground extends BaseClass {
 
 		// default value is used when only one season is initialized
 		this.hometeam = this.teams[0] ? this.teams[0].team : this.tournament.teamsArray[0];
+		this.bdStyle = this.hometeam.bdStyle;
+		this.bgStyle = this.hometeam.bgStyle;
+		this.fgStyle = this.hometeam.fgStyle;
 	}
 }

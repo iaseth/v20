@@ -26,9 +26,9 @@ export default class Match {
 			this.loser = this.team_a;
 		}
 
-		this.bdStyle = this.winner ? this.winner.bdStyle : {
-			borderColor: "#fff"
-		};
+		this.bdStyle = this.winner && this.winner.bdStyle;
+		this.bgStyle = this.winner && this.winner.bgStyle;
+		this.fgStyle = this.winner && this.winner.fgStyle;
 
 		this.order = jo.meta.order;
 		this.squad_a = new Squad(this, jo.teams[0], this.team_a, this.team_b);
