@@ -39,6 +39,8 @@ export default class BatsmanInning extends PlayerInning {
 	getBoundaryRuns = () => (4 * this.n4 + 6 * this.n6);
 
 	runsString = () => this.isOut ? this.runs : this.runs + "*";
+	get n4S () { return this.n4 ? this.n4 : "-"}
+	get n6S () { return this.n6 ? this.n6 : "-"}
 
 	consoleLog () {
 		console.log(`${this.player.batsRight ? " " : "@"} ${this.player.fn.padEnd(25)} ${this.runsString()} (${this.balls}) (${this.n4}x4, ${this.n6}x6, ${this.srF()})`);
