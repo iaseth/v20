@@ -43,6 +43,14 @@ export default class Player extends BaseClass {
 
 		this.overallBattingRecord = new BattingRecord(this, this.battingPerformances, () => true);
 		this.overallBowlingRecord = new BowlingRecord(this, this.bowlingPerformances, () => true);
+
+		// default value is used when only one season is initialized
+		this.debutTeam = this.battingPerformances[0] ? this.battingPerformances[0].for : this.tournament.teamsArray[0];
+		const lastBattingPerformance = this.battingPerformances[this.battingPerformances.length-1];
+		this.currentTeam = lastBattingPerformance ? lastBattingPerformance.for : this.debutTeam;
+		this.bdStyle = this.currentTeam.bdStyle;
+		this.bgStyle = this.currentTeam.bgStyle;
+		this.fgStyle = this.currentTeam.fgStyle;
 	}
 
 	getLink = () => `/players/${this.path}`;
