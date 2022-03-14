@@ -33,7 +33,7 @@ export default class BatsmanInning extends PlayerInning {
 	isWk = () => (this.player.id === this.teamInning.wk.id);
 
 	sr = () => this.balls ? (this.runs * 100 / this.balls) : 0;
-	srF = () => this.sr().toFixed(1);
+	srF = (n=1) => this.sr().toFixed(n);
 
 	getBoundaries = () => (this.n4 + this.n6);
 	getBoundaryRuns = () => (4 * this.n4 + 6 * this.n6);

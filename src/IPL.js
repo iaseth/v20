@@ -103,6 +103,14 @@ export default class IPL {
 		this.teamsArray.forEach(x => x.postBundleSetup());
 		this.groundsArray.forEach(g => g.postBundleSetup());
 		this.playersArray.forEach(x => x.postBundleSetup());
+
+		this.overallBattingRecords = this.playersArray.map(r => r.overallBattingRecord);
+		this.overallBowlingRecords = this.playersArray.map(r => r.overallBowlingRecord);
+
+		this.topBatsmen = [...this.overallBattingRecords].sort((a, b) => b.runs - a.runs);
+		this.topBowlers = [...this.overallBowlingRecords].sort((a, b) => b.wickets - a.wickets);
+		this.top10Batsmen = this.topBatsmen.slice(0, 10);
+		this.top10Bowlers = this.topBowlers.slice(0, 10);
 	}
 
 	getSeason (year) {

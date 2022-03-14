@@ -48,10 +48,10 @@ export default class BattingRecord {
 		});
 	}
 
-	getAvgF = () => this.getAvg().toFixed(1);
+	getAvgF = (n=1) => this.getAvg().toFixed(n);
 	getAvg = () => this.outs ? (this.runs / this.outs) : 0;
 
-	getSRF = () => this.getSR().toFixed(1);
+	getSRF = (n=1) => this.getSR().toFixed(n);
 	getSR = () => this.balls ? (this.runs * 100 / this.balls) : 0;
 
 	getHsString = () => this.hs ? this.hs.runsString() : "-";

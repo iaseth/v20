@@ -40,6 +40,9 @@ export default class Player extends BaseClass {
 		this.bowlingPerformances.forEach(bp => {
 			if (!bp.dnb) this.bowlingPositions[bp.position] = true;
 		});
+
+		this.overallBattingRecord = new BattingRecord(this, this.battingPerformances, () => true);
+		this.overallBowlingRecord = new BowlingRecord(this, this.bowlingPerformances, () => true);
 	}
 
 	getLink = () => `/players/${this.path}`;
