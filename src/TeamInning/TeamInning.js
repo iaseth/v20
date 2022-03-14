@@ -11,7 +11,6 @@ export default class TeamInning {
 		this.match = squad.match;
 		this.captain = squad.captain;
 		this.wk = squad.wk;
-		this.match = squad.match;
 		this.tournament = squad.tournament;
 		this.team = squad.team;
 		this.opposition = squad.opposition;
@@ -24,9 +23,17 @@ export default class TeamInning {
 			this.dnp = true;
 			return;
 		}
-		this.dnp = false;
 
+		this.dnp = false;
 		this.jo = jo;
+
+		this.setupMeta();
+		this.setupBatsmen();
+		this.setupBowlers();
+	}
+
+	setupMeta () {
+		const jo = this.jo;
 		this.runs = jo.runs;
 		this.overs = jo.overs;
 		this.balls = jo.balls;
@@ -42,9 +49,6 @@ export default class TeamInning {
 			const wicket = new Wicket(this, wj);
 			this.wickets.push(wicket);
 		}
-
-		this.setupBatsmen();
-		this.setupBowlers();
 	}
 
 	setupBatsmen () {
