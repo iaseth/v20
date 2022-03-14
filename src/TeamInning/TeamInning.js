@@ -30,6 +30,9 @@ export default class TeamInning {
 		this.runs = jo.runs;
 		this.overs = jo.overs;
 		this.balls = jo.balls;
+		this.extras = jo.extras;
+		this.totalExtras = [...Object.values(this.extras)].reduce((a, b) => (a + b), 0);
+
 		this.wkts = jo.wickets.length;
 		this.allout = this.wkts === 10;
 
