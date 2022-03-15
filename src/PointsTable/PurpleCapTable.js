@@ -6,18 +6,20 @@ export default class PurpleCapTable extends BaseCapTable {
 	constructor (pointsTable) {
 		super(pointsTable);
 
-		this.bowlingPerformances = [];
+		this.performances = [];
 		for (let match of this.pointsTable.matches) {
-			this.bowlingPerformances = this.bowlingPerformances.concat(match.bowlingPerformances);
+			this.performances = this.performances.concat(match.bowlingPerformances);
 		}
 
-		this.sortedBowlingPerformances = [...this.bowlingPerformances].sort((a, b) => {
+		this.sortedPerformances = [...this.performances].sort((a, b) => {
 			if (b.wickets === a.wickets) {
 				return a.runs - b.runs;
 			}
 			return b.wickets - a.wickets;
 		});
-		this.top10BowlingPerformances = this.sortedBowlingPerformances.slice(0, 10);
+		this.top10Figures = this.sortedPerformances.slice(0, 10);
 	}
+
+	getTopNFigures = (n=10) => this.sortedPerformances.slice(0, n);
 }
 
