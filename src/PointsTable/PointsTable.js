@@ -6,7 +6,7 @@ import PurpleCapTable from './PurpleCapTable';
 
 
 export default class PointsTable {
-	constructor (tournament, matches) {
+	constructor (tournament, matches, orangePurple=false) {
 		// tournament, season, teams and grounds can have a points table
 		this.tournament = tournament;
 		this.matches = matches;
@@ -26,5 +26,14 @@ export default class PointsTable {
 		});
 
 		this.rows.forEach((row, index) => row.position = (index+1));
+
+		if (orangePurple) {
+			this.setupOrangePurple();
+		}
+	}
+
+	setupOrangePurple () {
+		this.orangeCapTable = new OrangeCapTable(this);
+		this.purpleCapTable = new PurpleCapTable(this);
 	}
 }

@@ -1,7 +1,8 @@
 
 
 export default class BaseCapTable {
-	constructor () {
+	constructor (pointsTable) {
+		this.pointsTable = pointsTable;
 		this.rows = [];
 	}
 }

@@ -96,7 +96,7 @@ export default class TeamInning {
 	}
 
 	runrate = () => this.balls ? (this.runs * 6 / this.balls) : 0;
-	runrateF = () => this.runrate().toFixed(1);
+	runrateF = (n=1) => this.runrate().toFixed(n);
 
 	actuallyHappened = () => !this.dnp;
 
