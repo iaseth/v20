@@ -49,6 +49,10 @@ export default class Match {
 
 		this.firstInning = (this.order[0] === 0) ? this.inning_a : this.inning_b;
 		this.secondInning = (this.order[0] === 0) ? this.inning_b : this.inning_a;
+
+		this.players = [...this.squad_a.members, ...this.squad_b.members];
+		this.battingPerformances = [...this.inning_a.batsmen, ...this.inning_b.batsmen];
+		this.bowlingPerformances = [...this.inning_a.bowlers, ...this.inning_b.bowlers];
 	}
 
 	getLink = () => `/${this.year}/${this.seasonIndex+1}`;

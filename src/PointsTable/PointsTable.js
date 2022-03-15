@@ -33,7 +33,9 @@ export default class PointsTable {
 	}
 
 	setupOrangePurple () {
-		this.orangeCapTable = new OrangeCapTable(this);
-		this.purpleCapTable = new PurpleCapTable(this);
+		if (!this.orangeCapTable && !this.purpleCapTable) {
+			this.orangeCapTable = new OrangeCapTable(this);
+			this.purpleCapTable = new PurpleCapTable(this);
+		}
 	}
 }
