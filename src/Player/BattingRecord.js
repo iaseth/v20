@@ -2,8 +2,8 @@
 export default class BattingRecord {
 	constructor (player, performances, filter) {
 		this.player = player;
-		this.performances = performances;
 		this.filter = filter ? filter : () => true;
+		this.performances = performances.filter(this.filter);
 
 		this.zeroInit();
 		this.addInnings();
@@ -23,7 +23,7 @@ export default class BattingRecord {
 	}
 
 	addInnings () {
-		this.performances.filter(this.filter).forEach(performance => {
+		this.performances.forEach(performance => {
 			this.mats++;
 			if (performance.dnb) return;
 			this.inns++;

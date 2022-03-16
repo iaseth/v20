@@ -28,7 +28,6 @@ export default class PurpleCapTable extends BaseCapTable {
 			this.records.push(new BowlingRecord(player, this.performances, x => x.player === player));
 		}
 		this.sortedRecords = [...this.records].sort((a, b) => (b.wickets - a.wickets));
-		console.log(this.sortedRecords);
 	}
 
 	getTopNFigures = (n=10) => this.sortedPerformances.slice(0, n);
