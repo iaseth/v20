@@ -2,8 +2,11 @@
 export default class BowlingRecord {
 	constructor (player, performances, filter) {
 		this.player = player;
-		this.filter = filter ? filter : () => true;
-		this.performances = performances.filter(this.filter);
+		if (filter) {
+			this.performances = performances.filter(filter);
+		} else {
+			this.performances = performances;
+		}
 
 		this.zeroInit();
 		this.addInnings();
