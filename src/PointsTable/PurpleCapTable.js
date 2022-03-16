@@ -1,4 +1,5 @@
 import BaseCapTable from './BaseCapTable';
+import BowlingRecord from '../Player/BowlingRecord';
 
 
 
@@ -18,8 +19,19 @@ export default class PurpleCapTable extends BaseCapTable {
 			return b.wickets - a.wickets;
 		});
 		this.top10Figures = this.sortedPerformances.slice(0, 10);
+
+		this.records = [];
+		const bowlerIds = {};
+		this.performances.forEach(x => bowlerIds[x.player.id] = true);
+		for (const bowlerId in bowlerIds) {
+			const player = this.pointsTable.tournament.players[bowlerId];
+			this.records.push(new BowlingRecord(player, this.performances, x => x.player === player));
+		}
+		this.sortedRecords = [...this.records].sort((a, b) => (b.wickets - a.wickets));
+		console.log(this.sortedRecords);
 	}
 
 	getTopNFigures = (n=10) => this.sortedPerformances.slice(0, n);
+	getTopNByWickets = (n=10) => this.sortedRecords.slice(0, n);
 }
 
