@@ -54,5 +54,9 @@ export default class BattingRecord {
 	getSRF = (n=1) => this.getSR().toFixed(n);
 	getSR = () => this.balls ? (this.runs * 100 / this.balls) : 0;
 
+	getBoundaries = () => (this.n4 + this.n6);
+	getBoundaryRuns = () => (4 * this.n4 + 6 * this.n6);
+	getBoundaryPercent = (n=1) => (this.getBoundaryRuns() * 100 / this.runs).toFixed(n);
+
 	getHsString = () => this.hs ? this.hs.runsString() : "-";
 }

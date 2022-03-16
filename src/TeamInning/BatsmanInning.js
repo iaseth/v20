@@ -37,6 +37,7 @@ export default class BatsmanInning extends PlayerInning {
 
 	getBoundaries = () => (this.n4 + this.n6);
 	getBoundaryRuns = () => (4 * this.n4 + 6 * this.n6);
+	getBoundaryPercent = (n=1) => (this.getBoundaryRuns() * 100 / this.runs).toFixed(n);
 
 	runsString = () => this.isOut ? this.runs : this.runs + "*";
 	get n4S () { return this.n4 ? this.n4 : "-"}
