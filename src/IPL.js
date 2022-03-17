@@ -31,9 +31,9 @@ export default class IPL {
 	loadTeams () {
 		this.teams = {};
 		this.teamsArray = [];
-		for (let k in this.codes.teams) {
-			let x = new Team(this, this.codes.teams[k]);
-			this.teams[k] = x;
+		for (let jo of this.codes.teams) {
+			let x = new Team(this, jo);
+			this.teams[jo.id] = x;
 			this.teamsArray.push(x);
 		}
 
@@ -44,9 +44,9 @@ export default class IPL {
 	loadGrounds () {
 		this.grounds = {};
 		this.groundsArray = [];
-		for (let k in this.codes.grounds) {
-			let x = new Ground(this, this.codes.grounds[k]);
-			this.grounds[k] = x;
+		for (let jo of this.codes.grounds) {
+			let x = new Ground(this, jo);
+			this.grounds[jo.id] = x;
 			this.groundsArray.push(x);
 		}
 
@@ -57,9 +57,9 @@ export default class IPL {
 	loadPlayers () {
 		this.players = {};
 		this.playersArray = [];
-		for (let k in this.codes.players) {
-			let x = new Player(this, this.codes.players[k]);
-			this.players[k] = x;
+		for (let jo of this.codes.players) {
+			let x = new Player(this, jo);
+			this.players[jo.id] = x;
 			this.playersArray.push(x);
 		}
 
