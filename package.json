@@ -14,5 +14,9 @@
     "json"
   ],
   "author": "Ankur Seth",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8"
+  }
 }
