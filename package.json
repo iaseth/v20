@@ -1,7 +1,7 @@
 {
-  "name": "iplr",
-  "version": "0.7.0",
-  "description": "Node package for IPLR.",
+  "name": "v20",
+  "version": "0.1.0",
+  "description": "Node package for v20.",
   "main": "./lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
